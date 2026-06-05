@@ -1,21 +1,11 @@
-# sv
+# Coffe shop PWA
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
+## Recreating the project
+Without needing to install pnpm permanently you can instead use the following to recreate the project:
 
 ```sh
 # recreate this project
-pnpm dlx sv@0.15.4 create --template minimal --types ts --add prettier tailwindcss="plugins:none" --install pnpm coffeShop-pwa
+npx pnpm dlx sv@0.15.4 create --template minimal --types ts --add prettier tailwindcss="plugins:none" --install pnpm coffeShop-pwa
 ```
 
 ## Developing
@@ -36,7 +26,3 @@ To create a production version of your app:
 ```sh
 npm run build
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
