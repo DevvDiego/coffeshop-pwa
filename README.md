@@ -19,10 +19,10 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+## About PWAs
+This is managed via service workers to handle background/offline work by catching fetch requests and caching the required information and pages.
 
-To create a production version of your app:
-
-```sh
-npm run build
-```
+References:
+- [General explanation on StackOverlow](https://stackoverflow.com/a/77647464)
+- [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)
+- [Service Workers for Sveltekit](https://svelte.dev/docs/kit/service-workers)
