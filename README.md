@@ -1,5 +1,18 @@
 # Coffe shop PWA
 
+## For general knowledge about Svelte and SvelteKit
+Reach out to the [documentation](https://svelte.dev/docs/kit/service-workers)
+
+## About PWAs
+This is managed via service workers to handle background/offline work by catching fetch requests and caching the required information and pages.
+
+References:
+- [General explanation on StackOverlow](https://stackoverflow.com/a/77647464)
+- [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)
+- [Service Workers for Sveltekit](https://svelte.dev/docs/kit/service-workers)
+
+---
+
 ## Recreating the project
 Without needing to install pnpm permanently you can instead use the following to recreate the project:
 
@@ -18,11 +31,3 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
-
-## About PWAs
-This is managed via service workers to handle background/offline work by catching fetch requests and caching the required information and pages.
-
-References:
-- [General explanation on StackOverlow](https://stackoverflow.com/a/77647464)
-- [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)
-- [Service Workers for Sveltekit](https://svelte.dev/docs/kit/service-workers)
