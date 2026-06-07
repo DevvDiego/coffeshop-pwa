@@ -11,6 +11,9 @@ References:
 - [manifest.json](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)
 - [Service Workers for Sveltekit](https://svelte.dev/docs/kit/service-workers)
 
+## Icons references
+- [SvgRepo tritone happy icons](https://www.svgrepo.com/collection/various-tritone-happy-icons/)
+
 ---
 
 ## Recreating the project
