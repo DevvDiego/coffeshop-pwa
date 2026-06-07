@@ -1,9 +1,12 @@
 <script>
 	import { resolve } from "$app/paths";
+	import { auth } from "$lib/auth.svelte";
 </script>
 
 <h1>
-    en la pagina home
+    Bienvenido {auth.user.name}
 </h1>
 
-<a href={resolve("/")}> regresar </a>
+<p>
+    en la pagina home
+</p>

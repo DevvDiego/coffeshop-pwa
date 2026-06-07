@@ -6,11 +6,21 @@
 	import { resolve } from '$app/paths';
 	import { auth } from '$lib/auth.svelte';
 	
-	// onMount(()=>{
- //        setTimeout(()=>{
- //            goto(resolve("/home"))
- //        }, 4000);
-	// });
+	onMount(()=>{
+
+        setTimeout(()=>{
+          
+            if(auth.user.isloggedIn){
+                goto(resolve("/home"));
+                
+    		} else {
+                goto(resolve("/login"));
+                
+            }
+          
+        }, 3000);
+
+	});
 	
 </script>
 
