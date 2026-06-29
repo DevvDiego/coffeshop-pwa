@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Lirios</string>
+    <string name="title_activity_main">Lirios</string>
+    <string name="package_name">com.lirios.app</string>
+    <string name="custom_url_scheme">com.lirios.app</string>
+</resources>
