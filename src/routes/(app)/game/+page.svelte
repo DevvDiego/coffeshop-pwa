@@ -3,6 +3,7 @@
 	import { onMount, onDestroy } from "svelte";
 	import player from "$lib/assets/imgs/player.png";
 	import item from "$lib/assets/imgs/item.png";
+	import { auth } from "$lib/auth.svelte";
 
 	interface GameItem {
 		x: number;
@@ -52,12 +53,13 @@
 	let itemImg: HTMLImageElement;
 
 	onMount(() => {
-		if (!sessionStorage.getItem('username')) {
-			goto('/login');
-			return;
-		}
-
-		playerImg = new Image(); playerImg.src = player;
+     	const storedUser = auth.user.isloggedIn;
+     	if (!storedUser) {
+      		goto('/login');
+      		return;
+     	}
+     	
+     	playerImg = new Image(); playerImg.src = player;
 		itemImg = new Image(); itemImg.src = item;
 
 		if (canvasElement) {
