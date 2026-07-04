@@ -80,7 +80,8 @@
 	}
 </script>
 
-<header class="main-header">
+<div class="flex flex-col flex-nowrap">
+    <header class="main-header">
 		<div class="header-top">
 			<div class="brand-area">
 				<div class="logo-placeholder-sm">
@@ -101,9 +102,9 @@
 				Rectoría
 			</span>
 		</div>
-</header>
-
-<div class="app-container" style="padding-top:0;">
+    </header>
+    
+    <div class="app-container" style="padding-top:0;">
 		<div class="menu-content">
 			<h3 class="section-title">Cafés Tradicionales</h3>
 			
@@ -129,19 +130,20 @@
 				{/each}
 			</div>
 		</div>
-</div>
-
-{#if totalItems > 0}
-		<a href="/cart" class="cart-bar-float" id="cart-float" style="display: flex; text-decoration: none; color: inherit;">
-			<div class="cart-bar-float-left">
+    </div>
+    
+    {#if totalItems > 0}
+		<a href="/cart" class="z-20 cart-bar-float " id="cart-float" style="display: flex; text-decoration: none; color: inherit;">
+			<div class="cart-bar-float-left text-white">
 				<div class="cart-count-badge" id="cart-badge-count">{totalItems}</div>
 				<span>Ver carrito</span>
 			</div>
-			<span id="cart-float-total">${totalPrice.toFixed(2)}</span>
+			<span id="cart-float-total" class="text-white">${totalPrice.toFixed(2)}</span>
 		</a>
-{/if}
+    {/if}
+</div>
 
-<a class="whatsapp-btn"
+<a class="whatsapp-btn {totalItems > 0 ? "opacity-0":"" }"
 		 href="_blank"
 		 target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
 		<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
