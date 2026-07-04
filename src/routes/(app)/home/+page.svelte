@@ -2,12 +2,14 @@
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { resolve } from "$app/paths";
+	import { auth } from "$lib/auth.svelte";
 	import img1 from "$lib/assets/imgs/1.jfif";
 	import img2 from "$lib/assets/imgs/2.jfif";
 	import img3 from "$lib/assets/imgs/3.jfif";
 	import img4 from "$lib/assets/imgs/4.jfif";
 	import img5 from "$lib/assets/imgs/5.jfif";
-	import { auth } from "$lib/auth.svelte";
+	import IconLocationOutline from '~icons/ion/location-outline';
+	import IconCartOutline from '~icons/ion/cart-outline';
 
 	interface Product {
 		id: number;
@@ -91,14 +93,14 @@
 			</div>
 			<div style="display:flex; gap:8px; align-items:center;">
 				<a href="/history" class="btn-qty" title="Historial de pedidos" style="display: flex; align-items: center;">
-					<i class="material-icons" style="font-size:22px; color:var(--text-muted);">receipt_long</i>
+					<IconCartOutline/>
 				</a>
 			</div>
 		</div>
 		<div class="user-delivery-info">
 			<span class="user-name">{username}</span>
 			<span class="location-badge">
-				<i class="material-icons" style="font-size:16px;">location_on</i>
+				<IconLocationOutline/>
 				Rectoría
 			</span>
 		</div>
