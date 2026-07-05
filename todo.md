@@ -6,6 +6,7 @@
 - [ ] Una barra de navegacion inferior
 - [ ] Micro interacciones a la hora de mover pestañas o demas situaciones
 - [ ] QUitar el pcnh boton de whatsapp ni que fueramos restaurante en linea
+- [ ] Agregar un icono de 192x192.png para el service worker (agregarlo en la carpeta /static)
 
 ### Elementos tecnicos que detienen el avance
 - [ ] Los estilos estan super mega hiper combinados, en lugar de usar la componentizacion de svelte
