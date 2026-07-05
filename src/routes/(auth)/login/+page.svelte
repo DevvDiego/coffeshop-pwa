@@ -23,26 +23,37 @@
 	}
 </script>
 
-<div class="login-page">
-	<div class="login-header">
-		<div class="logo-placeholder-large">
-			<img src={logo} alt="Logo Lirios Cafetería">
+<div class="flex flex-col justify-center items-center text-center min-h-screen bg-linear-to-b from-primary-light to-background p-5">
+	<div class="mb-10">
+		<div class="
+		    w-30 h-30 bg-primary-light border-2 border-dashed border-primary rounded-full 
+    		flex items-center justify-center mx-auto mb-4 overflow-hidden
+        ">
+			<img src={logo} alt="Logo Lirios Cafetería" class="w-full h-full object-cover">
 		</div>
-		<h1>Lirios</h1>
-		<p style="color: var(--text-muted);">Cafetería y Antojos</p>
+		<h1 class="text-primary text-4xl font-bold">Lirios</h1>
+		<p class="text-text-muted">Cafetería y Antojos</p>
 	</div>
 
-	<form class="login-card" onsubmit={handleLogin}>
-		<div class="input-group">
-			<label for="username">Nombre de usuario</label>
+	<form onsubmit={handleLogin} class="w-full max-w-md bg-white p-6 rounded-2xl shadow-card">
+		<div class="mb-5 text-left">
+			<label for="username" class="block text-sm text-text-muted mb-2 font-semibold">
+				Nombre de usuario
+			</label>
 			<input 
 				type="text" 
 				id="username" 
-				placeholder="Ej. Vidal" 
+				placeholder="Escribe tu nombre" 
 				bind:value={username}
+				class="w-full p-3.5 border border-gray-300 rounded-lg text-base outline-none focus:border-primary transition-colors"
 			>
 		</div>
 		
-		<button type="submit" class="btn">Entrar</button>
+		<button type="submit" class="
+		    w-full py-3.5 bg-primary text-white border-none 
+		    rounded-lg text-base font-semibold cursor-pointer transition active:scale-95
+		">
+			Entrar
+		</button>
 	</form>
 </div>
