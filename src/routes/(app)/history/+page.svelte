@@ -2,6 +2,9 @@
 	import { goto } from "$app/navigation";
 	import { auth } from "$lib/auth.svelte";
 	import { onMount } from "svelte";
+	
+	import IconArrowBack from '~icons/ion/arrow-back';
+	import IconTrashOutline from '~icons/ion/trash-outline';
 
 	interface OrderItem {
 		qty: number;
@@ -49,19 +52,24 @@
 	}
 </script>
 
-<header class="main-header">
-	<div class="header-top">
-		<div class="brand-area">
-			<a href="/" class="back-btn" title="Volver al inicio" style="display: flex; align-items: center;">
-				<i class="material-icons">arrow_back</i>
-			</a>
-			<span class="brand-name" style="font-size:1.1rem;">Historial de Pedidos</span>
-		</div>
+<header class="p-5">
+    
+	<div class="flex items-center justify-between gap-2.5 mb-5">
+        
+	    <div class="flex items-center gap-2.5">
+            <a href="/" class="bg-none border-none cursor-pointer text-text-main flex items-center" title="Volver al menú">
+    			<IconArrowBack class="text-[24px]" />
+           	</a>
+
+           	<h3 class="text-[1.2rem] font-bold text-text-main m-0">Historial de pedidos</h3>
+        </div>
 		
-		<button class="btn-qty" onclick={clearHistorial} title="Borrar historial" style="font-size:0; background:none; border:none; cursor:pointer;">
-			<i class="material-icons" style="font-size:20px; color:var(--text-muted);">delete_outline</i>
+		<button onclick={clearHistorial} class="bg-none border-none cursor-pointer text-text-main flex items-center" title="Volver al menú">
+			<IconTrashOutline class="text-[20px]" />
 		</button>
+		
 	</div>
+	
 </header>
 
 <div class="app-container historial-page" style="padding-top:10px;">
