@@ -123,7 +123,7 @@
 			{#if cartList.length === 0}
 				<div class="text-center text-text-muted mt-10">
 					<p>Tu carrito está vacío.</p>
-					<a href="/" class="
+					<a href="/home" class="
 					    text-primary font-semibold no-underline 
 						inline-block mt-2.5
 					">
