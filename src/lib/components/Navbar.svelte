@@ -33,7 +33,7 @@
       activeIcon: IconTimeFilled
     },
     {
-      path: '/perfil',
+      path: '/profile',
       label: 'Perfil',
       icon: IconPerson,
       activeIcon: IconPersonFilled
