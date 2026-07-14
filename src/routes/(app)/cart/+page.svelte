@@ -2,6 +2,8 @@
 	import { goto } from "$app/navigation";
 	import { auth } from "$lib/auth.svelte";
 	import { onMount } from "svelte";
+	
+	import IconArrowBack from '~icons/ion/arrow-back';
 
 	interface CartItem {
 		id: number;
@@ -100,62 +102,96 @@
 	}
 </script>
 
-<div class="app-container">
-	<div class="page-header">
-		<a href="/" class="back-btn" title="Volver al menú">
-			<i class="material-icons">arrow_back</i>
-		</a>
-		<h3 class="section-title" style="margin:0;">Detalle de tu Pedido</h3>
-	</div>
 
-	<div id="cart-items-container" style="flex:1;">
-		{#if cartList.length === 0}
-			<div class="empty-cart-message" style="text-align:center; color:var(--text-muted); margin-top:40px;">
-				<p>Tu carrito está vacío.</p>
-				<a href="/" style="color:var(--primary-color); font-weight:600; text-decoration:none; display:inline-block; margin-top:10px;">
-					Regresar al menú →
+<div class="w-full min-h-screen bg-neutral-100/50 flex justify-center items-center">
+	
+	<div class="w-full max-w-120 h-screen bg-surface relative shadow-[0_0_20px_rgba(0,0,0,0.05)] flex flex-col overflow-hidden">
+		
+		<!-- HEADER FIJO -->
+		<header class="p-5 border-b border-gray-100 shrink-0">
+			<div class="flex items-center gap-2.5">
+				<a href="/" class="bg-none border-none cursor-pointer text-text-main flex items-center" title="Volver al menú">
+					<IconArrowBack class="text-[24px]" />
 				</a>
+				<h3 class="text-[1.2rem] font-bold text-text-main m-0">Carrito de compras</h3>
 			</div>
-		{:else}
-			{#each cartList as item (item.id)}
-				<div class="cart-item">
-					<div class="cart-item-details">
-						<h4>{item.name}</h4>
-						<p>${(item.price * item.qty).toFixed(2)}</p>
-					</div>
-					<div class="quantity-controls">
-						<button class="btn-qty" onclick={() => changeQty(item.id, -1)}>−</button>
-						<span style="font-weight:600;">{item.qty}</span>
-						<button class="btn-qty" onclick={() => changeQty(item.id, 1)}>+</button>
-					</div>
+		</header>
+
+		<!-- LISTA DE PRODUCTOS CON SCROLL INDEPENDIENTE: 
+		     Crece dinamicamente (`flex-1`) pero no empuja al total hacia abajo si se llena -->
+		<div class="flex-1 overflow-y-auto p-5">
+			{#if cartList.length === 0}
+				<div class="text-center text-text-muted mt-10">
+					<p>Tu carrito está vacío.</p>
+					<a href="/" class="
+					    text-primary font-semibold no-underline 
+						inline-block mt-2.5
+					">
+						Regresar al menú
+					</a>
 				</div>
-			{/each}
-		{/if}
-	</div>
+			{:else}
+				<div class="flex flex-col gap-1">
+					{#each cartList as item (item.id)}
+						<div class="cart-item">
+							<div class="cart-item-details">
+								<h4>{item.name}</h4>
+								<p>${(item.price * item.qty).toFixed(2)}</p>
+							</div>
+							<div class="quantity-controls">
+								<button class="btn-qty" onclick={() => changeQty(item.id, -1)}>−</button>
+								<span class="font-semibold">{item.qty}</span>
+								<button class="btn-qty" onclick={() => changeQty(item.id, 1)}>+</button>
+							</div>
+						</div>
+					{/each}
+				</div>
+			{/if}
+		</div>
 
-	<div class="cart-summary">
-		<div class="summary-row">
-			<span>Subtotal</span>
-			<span>${total.toFixed(2)}</span>
-		</div>
-		<div class="summary-row">
-			<span>Costo de Entrega</span>
-			<span style="color:#4CAF50; font-weight:600;">Gratis (Sucursal)</span>
-		</div>
-		<div class="summary-row total">
-			<span>Total</span>
-			<span>${total.toFixed(2)}</span>
-		</div>
+		<!-- FOOTER FIJO ABAJO -->
+		<div class="p-5 pb-21 border-t border-gray-100 bg-surface shrink-0 shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+     			
+     			<div class="cart-summary w-full bg-neutral-50/70 p-4 rounded-xl flex flex-col gap-2.5">
+        				<div class="summary-row flex justify-between text-sm text-text-muted">
+           					<span>Subtotal</span>
+           					<span class="font-medium text-text-main">${total.toFixed(2)}</span>
+        				</div>
+            				<div class="summary-row flex justify-between text-sm text-text-muted">
+           					<span>Costo de Entrega</span>
+           					<span class="text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded-md text-xs">
+          						Gratis (Sucursal)
+           					</span>
+        				</div>
+        				
+        				<!-- Línea divisoria -->
+        				<div class="border-t border-dashed border-gray-200 my-1"></div>
+        				
+        				<div class="summary-row total flex justify-between items-center text-lg font-bold text-text-main">
+           					<span>Total</span>
+           					<span class="text-xl text-text-main">${total.toFixed(2)}</span>
+        				</div>
+     			</div>
+        
+     			<button 
+        				onclick={placeOrder} 
+        				disabled={cartList.length === 0}
+        				class="w-full mt-4 py-4 px-6 bg-emerald-600 text-white font-bold text-base rounded-xl
+     				       shadow-(--shadow-float) cursor-pointer select-none text-center
+     				       transition-all duration-200 
+     				       hover:brightness-105
+     				       active:scale-[0.97] active:brightness-95
+     				       disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none disabled:transform-none"
+     			>
+        				<div class="flex items-center justify-center gap-2">
+           					<span>Confirmar pedido</span>
+       					</div>
+     			</button>
+        
+        </div>
+		
+		
 	</div>
-
-	<button 
-		class="btn btn-accent" 
-		style="margin-top:20px;" 
-		onclick={placeOrder} 
-		disabled={cartList.length === 0}
-	>
-		Pedir Ahora
-	</button>
 </div>
 
 {#if isModalOpen}
@@ -164,7 +200,14 @@
 			<i class="material-icons">check_circle</i>
 			<h3>¡Gracias por tu orden!</h3>
 			<p>Tu pedido está siendo procesado de inmediato. Pasa a recogerlo directamente a la sucursal de <strong>Rectoría</strong>.</p>
-			<button class="btn" onclick={goToGame}>Iniciar juego de espera</button>
+			<button 
+			    class="
+					w-full mt-4 py-4 px-6 text-black font-bold text-base rounded-xl
+     			    shadow-(--shadow-float) cursor-pointer select-none text-center" 
+                onclick={goToGame}
+			>
+                    Iniciar juego de espera
+            </button>
 		</div>
 	</div>
 {/if}
