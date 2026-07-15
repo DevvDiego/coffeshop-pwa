@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { auth } from "$lib/auth.svelte";
-	import logo from "$lib/assets/imgs/1.jfif";
+	import logo from "$lib/assets/imgs/logo.jfif";
 	
 	let username = $state<string>("");
 
