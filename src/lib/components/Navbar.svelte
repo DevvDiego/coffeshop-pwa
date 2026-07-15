@@ -7,8 +7,6 @@
   import IconTimeFilled from '~icons/ion/time';
   import IconCart from '~icons/ion/cart-outline';
   import IconCartFilled from '~icons/ion/cart';
-  // import IconNotifications from '~icons/ion/game-controller-outline';
-  // import IconNotificationsFilled from '~icons/ion/game-controller';
   import IconPerson from '~icons/ion/person-outline';
   import IconPersonFilled from '~icons/ion/person';
 
