@@ -3,7 +3,8 @@
 	import { auth } from "$lib/auth.svelte";
 	import { onMount } from "svelte";
 	
-	import IconArrowBack from '~icons/ion/arrow-back';
+	import IconArrowBack from '~icons/ion/arrow-back';	
+	import IconCheckmarkCircleOutline from '~icons/ion/checkmark-circle-outline';
 
 	interface CartItem {
 		id: number;
@@ -197,7 +198,7 @@
 {#if isModalOpen}
 	<div class="modal active">
 		<div class="modal-content">
-			<i class="material-icons">check_circle</i>
+			<IconCheckmarkCircleOutline class="text-5xl inline"/>
 			<h3>¡Gracias por tu orden!</h3>
 			<p>Tu pedido está siendo procesado de inmediato. Pasa a recogerlo directamente a la sucursal de <strong>Rectoría</strong>.</p>
 			<button 
