@@ -176,7 +176,7 @@
      			<button 
         				onclick={placeOrder} 
         				disabled={cartList.length === 0}
-        				class="w-full mt-4 py-4 px-6 bg-emerald-600 text-white font-bold text-base rounded-xl
+        				class="w-full mt-4 py-4 px-6 bg-primary text-white font-bold text-base rounded-xl
      				       shadow-(--shadow-float) cursor-pointer select-none text-center
      				       transition-all duration-200 
      				       hover:brightness-105
