@@ -5,6 +5,8 @@
 	
 	import IconArrowBack from '~icons/ion/arrow-back';
 	import IconTrashOutline from '~icons/ion/trash-outline';
+	import IconReceipt from '~icons/ion/receipt-outline';
+	import IconWarningOutline from '~icons/ion/warning-outline';
 
 	interface OrderItem {
 		qty: number;
@@ -21,14 +23,16 @@
 	}
 
 	let historial = $state<Order[]>([]);
+	// Estado para controlar la visibilidad del modal
+	let isModalOpen = $state<boolean>(false);
 
 
 	onMount(() => {
-       	const storedUser = auth.user.isloggedIn;
-     	if (!storedUser) {
-    		goto('/login');
-    		return;
-     	}
+		const storedUser = auth.user.isloggedIn;
+		if (!storedUser) {
+			goto('/login');
+			return;
+		}
 	
 
 		try {
@@ -44,11 +48,18 @@
 		}
 	});
 
-	function clearHistorial(): void {
-		if (!confirm('¿Borrar todo el historial de pedidos?')) return;
-		
+	function triggerClearConfirm(): void {
+		isModalOpen = true;
+	}
+
+	function confirmClearHistorial(): void {
 		localStorage.removeItem('historial');
 		historial = []; 
+		isModalOpen = false;
+	}
+
+	function closeModal(): void {
+		isModalOpen = false;
 	}
 </script>
 
@@ -59,12 +70,12 @@
 	    <div class="flex items-center gap-2.5">
             <a href="/" class="bg-none border-none cursor-pointer text-text-main flex items-center" title="Volver al menú">
     			<IconArrowBack class="text-[24px]" />
-           	</a>
+            </a>
 
-           	<h3 class="text-[1.2rem] font-bold text-text-main m-0">Historial de pedidos</h3>
+            <h3 class="text-[1.2rem] font-bold text-text-main m-0">Historial de pedidos</h3>
         </div>
 		
-		<button onclick={clearHistorial} class="bg-none border-none cursor-pointer text-text-main flex items-center" title="Volver al menú">
+		<button onclick={triggerClearConfirm} class="bg-none border-none cursor-pointer text-text-main flex items-center" title="Borrar historial">
 			<IconTrashOutline class="text-[20px]" />
 		</button>
 		
@@ -76,7 +87,7 @@
 	<div id="historial-container">
 		{#if historial.length === 0}
 			<div class="empty-historial">
-				<i class="material-icons">receipt_long</i>
+    			<IconReceipt class="inline text-5xl text-primary" />
 				<p>Aún no tienes pedidos registrados.</p>
 				<a href="/" style="color:var(--primary-color); font-weight:600; text-decoration:none; display:inline-block; margin-top:16px;">
 					Ver menú →
@@ -110,3 +121,29 @@
 		{/if}
 	</div>
 </div>
+
+
+{#if isModalOpen}
+	<div class="modal active">
+		<div class="modal-content">
+    		<IconWarningOutline class="text-xl"/>
+			<h3>¿Borrar historial?</h3>
+			<p>Esta acción eliminará de forma permanente todos tus registros de pedidos locales. ¿Estás seguro de continuar?</p>
+			
+			<div class="flex flex-col gap-2 w-full mt-4">
+				<button 
+					class="w-full py-3 px-6 bg-red-600 hover:bg-red-700 text-white font-bold text-base rounded-xl cursor-pointer text-center" 
+					onclick={confirmClearHistorial}
+				>
+					Sí, borrar todo
+				</button>
+				<button 
+					class="w-full py-3 px-6 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-base rounded-xl cursor-pointer text-center" 
+					onclick={closeModal}
+				>
+					Cancelar
+				</button>
+			</div>
+		</div>
+	</div>
+{/if}
