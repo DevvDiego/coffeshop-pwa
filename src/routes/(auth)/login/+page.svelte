@@ -3,7 +3,10 @@
 	import { auth } from "$lib/auth.svelte";
 	import logo from "$lib/assets/imgs/logo.jfif";
 	
+	import IconInformationCircleOutline from '~icons/ion/information-circle-outline';
+	
 	let username = $state<string>("");
+	let isModalOpen = $state<boolean>(false);
 
 	function handleLogin(ev: SubmitEvent): void {
 		ev.preventDefault();
@@ -11,7 +14,7 @@
 		const trimmedName = username.trim();
 
 		if (trimmedName === '') {
-			alert('Por favor ingresa tu nombre de usuario para continuar.');
+			isModalOpen = true;
 			return;
 		}
 
@@ -20,6 +23,10 @@
 		}
 
 		goto("/home"); 
+	}
+
+	function closeModal(): void {
+		isModalOpen = false;
 	}
 </script>
 
@@ -57,3 +64,20 @@
 		</button>
 	</form>
 </div>
+
+{#if isModalOpen}
+	<div class="modal active">
+		<div class="modal-content">
+			<IconInformationCircleOutline class="text-5xl inline"/>
+			<h3>Nombre requerido</h3>
+			<p>Por favor, ingresa tu nombre de usuario para poder continuar al menú de la cafetería.</p>
+			<button 
+				class="w-full mt-4 py-4 px-6 text-black font-bold text-base rounded-xl
+				       shadow-(--shadow-float) cursor-pointer select-none text-center" 
+				onclick={closeModal}
+			>
+				Entendido
+			</button>
+		</div>
+	</div>
+{/if}
