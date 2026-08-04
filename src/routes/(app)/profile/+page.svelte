@@ -27,7 +27,7 @@
 	}
 </script>
 
-<div class="w-full max-w-120 min-h-screen bg-surface relative shadow-[0_0_20px_rgba(0,0,0,0.05)] flex flex-col p-5">
+<div class="w-full max-w-120 m-auto min-h-screen bg-surface relative shadow-[0_0_20px_rgba(0,0,0,0.05)] flex flex-col p-5">
 	
 	<div class="flex items-center gap-2.5 mb-5">
 		<a href="/" class="bg-none border-none cursor-pointer text-text-main flex items-center" title="Volver al menú">

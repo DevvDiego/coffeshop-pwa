@@ -315,7 +315,7 @@
 </script>
 
 <div class="w-full min-h-screen flex justify-center bg-primary">
-    <div class="w-full max-w-120 min-h-screen relative flex flex-col overflow-hidden bg-linear-to-b from-primary to-accent text-white pb-[calc(4rem+env(safe-area-inset-bottom,0px))]">
+    <div class="w-full max-w-120 m-auto min-h-screen relative flex flex-col overflow-hidden bg-linear-to-b from-primary to-accent text-white pb-[calc(4rem+env(safe-area-inset-bottom,0px))]">
 
 		<div class="absolute top-0 inset-x-0 z-20 flex items-center justify-between p-4 pointer-events-none">
 

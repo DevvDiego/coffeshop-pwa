@@ -77,7 +77,7 @@
 <div class="flex flex-col flex-nowrap">
     <Header {username} logoImg={logo} />
     
-    <div class="w-full max-w-120 min-h-screen bg-surface relative shadow-card flex flex-col px-5 pt-0">
+    <div class="w-full max-w-120 m-auto min-h-screen bg-surface relative shadow-card flex flex-col px-5 pt-0">
         <div class="pb-25">
             {#each categories as cat}
                 {#if cat.products.length > 0}

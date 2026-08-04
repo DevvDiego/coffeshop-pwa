@@ -83,7 +83,7 @@
 	
 </header>
 
-<div class="app-container historial-page" style="padding-top:10px;">
+<div class="max-w-120 m-auto app-container historial-page" style="padding-top:10px;">
 	<div id="historial-container">
 		{#if historial.length === 0}
 			<div class="empty-historial">
