@@ -76,6 +76,7 @@
 				id="username" 
 				placeholder="Escribe tu nombre" 
 				bind:value={username}
+				max="20"
 				disabled={isLoading}
 				class="w-full p-3.5 border border-gray-300 rounded-lg text-base outline-none focus:border-primary transition-colors disabled:bg-gray-100"
 			/>
@@ -90,6 +91,7 @@
 				id="password" 
 				placeholder="Crea una contraseña" 
 				bind:value={password}
+				max="30"
 				disabled={isLoading}
 				class="w-full p-3.5 border border-gray-300 rounded-lg text-base outline-none focus:border-primary transition-colors disabled:bg-gray-100"
 			/>

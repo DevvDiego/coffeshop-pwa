@@ -86,6 +86,7 @@
 				id="username" 
 				placeholder="Nombre de usuario" 
 				bind:value={username}
+				max="20"
 				disabled={isLoading}
 				oninput={() => (errorMessage = null)}
 				class="w-full p-3.5 border border-gray-300 rounded-lg text-base outline-none focus:border-primary transition-colors disabled:bg-gray-100"
@@ -101,6 +102,7 @@
 				id="password" 
 				placeholder="Contraseña" 
 				bind:value={password}
+				max="30"
 				disabled={isLoading}
 				oninput={() => (errorMessage = null)}
 				class="w-full p-3.5 border border-gray-300 rounded-lg text-base outline-none focus:border-primary transition-colors disabled:bg-gray-100"
