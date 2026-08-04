@@ -20,6 +20,7 @@
 		"@sveltejs/kit": "^2.57.0",
 		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@tailwindcss/vite": "^4.2.2",
+		"@types/bcryptjs": "^3.0.0",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
@@ -33,6 +34,7 @@
 	"dependencies": {
 		"@capacitor/android": "^8.4.1",
 		"@capacitor/core": "^8.4.1",
-		"@fontsource-variable/jetbrains-mono": "^5.2.8"
+		"@fontsource-variable/jetbrains-mono": "^5.2.8",
+		"bcryptjs": "^3.0.3"
 	}
 }

@@ -1,3 +1,5 @@
+allowBuilds:
+  bcrypt: false
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - esbuild
