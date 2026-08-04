@@ -9,11 +9,9 @@
 	let password = $state<string>("");
 	let isModalOpen = $state<boolean>(false);
 	let isLoading = $state<boolean>(false);
-	let errorMessage = $state<string | null>(null);
 
-	async function handleLogin(ev: SubmitEvent): Promise<void> {
+	async function handleRegister(ev: SubmitEvent): Promise<void> {
 		ev.preventDefault();
-		errorMessage = null;
 		
 		const trimmedName = username.trim();
 		const trimmedPassword = password.trim();
@@ -26,18 +24,16 @@
 		try {
 			isLoading = true;
 			
-			// Validamos tanto usuario como contraseña
-			const result = await auth.login(trimmedName, trimmedPassword);
+			await auth.register(trimmedName, trimmedPassword);
+			
+			// Iniciamos sesion automaticamente tras el registro
+			const success = await auth.login(trimmedName, trimmedPassword);
 
-			if (result.success) {
+			if (success) {
 				goto("/home");
-			} else {
-				
-				errorMessage = result.message || "Credenciales inválidas.";
 			}
 		} catch (error) {
-			console.error("Error durante el inicio de sesión:", error);
-			errorMessage = "Error al intentar iniciar sesión.";
+			console.error("Error durante el registro:", error);
 		} finally {
 			isLoading = false;
 		}
@@ -60,22 +56,16 @@
 		<p class="text-text-muted">Cafetería y Antojos</p>
 	</div>
 
-	<form onsubmit={handleLogin} class="w-full max-w-md bg-white p-6 rounded-2xl shadow-card">
+	<form onsubmit={handleRegister} class="w-full max-w-md bg-white p-6 rounded-2xl shadow-card">
 		<div class="mb-8">
 			<h1 class="text-2xl font-bold text-gray-800 mb-1">
-				Inicia sesión para empezar
+				Regístrate para empezar
 			</h1>
 			
-			<a href={resolve("/register")} class="text-sm text-primary hover:underline">
-				¿No tienes una cuenta? Regístrate
+			<a href={resolve("/login")} class="text-sm text-primary hover:underline">
+				¿Ya tienes una cuenta? Inicia sesión
 			</a>
 		</div>
-
-		{#if errorMessage}
-			<div class="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm text-left font-medium">
-				{errorMessage}
-			</div>
-		{/if}
 	
 		<div class="mb-5 text-left">
 			<label for="username" class="block text-sm text-text-muted mb-2 font-semibold">
@@ -84,10 +74,9 @@
 			<input 
 				type="text" 
 				id="username" 
-				placeholder="Nombre de usuario" 
+				placeholder="Escribe tu nombre" 
 				bind:value={username}
 				disabled={isLoading}
-				oninput={() => (errorMessage = null)}
 				class="w-full p-3.5 border border-gray-300 rounded-lg text-base outline-none focus:border-primary transition-colors disabled:bg-gray-100"
 			/>
 		</div>
@@ -99,10 +88,9 @@
 			<input 
 				type="password" 
 				id="password" 
-				placeholder="Contraseña" 
+				placeholder="Crea una contraseña" 
 				bind:value={password}
 				disabled={isLoading}
-				oninput={() => (errorMessage = null)}
 				class="w-full p-3.5 border border-gray-300 rounded-lg text-base outline-none focus:border-primary transition-colors disabled:bg-gray-100"
 			/>
 		</div>
@@ -116,7 +104,7 @@
 				disabled:opacity-50 disabled:cursor-not-allowed
 			"
 		>
-			{isLoading ? 'Comprobando...' : 'Iniciar sesión'}
+			{isLoading ? 'Registrando...' : 'Crear Cuenta'}
 		</button>
 	</form>
 </div>
@@ -126,7 +114,7 @@
 		<div class="modal-content">
 			<IconInformationCircleOutline class="text-5xl inline text-amber-500 mb-2"/>
 			<h3 class="text-xl font-bold mb-2">Campos requeridos</h3>
-			<p class="text-gray-600">Por favor, ingresa un nombre de usuario y contraseña válidos para iniciar sesión.</p>
+			<p class="text-gray-600">Por favor, ingresa un nombre de usuario y una contraseña válidos para registrarte.</p>
 			<button 
 				class="w-full mt-4 py-3 px-6 text-black font-bold text-base rounded-xl
 				       shadow-float cursor-pointer select-none text-center bg-gray-100 hover:bg-gray-200 transition" 
