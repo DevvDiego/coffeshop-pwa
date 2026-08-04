@@ -63,6 +63,34 @@ npx cap run android --live-reload --external
 
 ---
 
+## Project dependencies
+
+#### dependencies
+
+* **`@capacitor/core`**: Núcleo para ejecutar la app en dispositivos móviles.
+* **`@capacitor/android`**: Puente nativo para compilar y ejecutar en Android o IOs.
+* **`bcryptjs`**: Encriptación y verificación segura de contraseñas con hashes.
+* **`@fontsource-variable/jetbrains-mono`**: Fuente tipográfica variable JetBrains Mono alojada localmente.
+
+#### devDependencies
+
+* **`svelte`**: Framework reactivo para construir la interfaz de usuario.
+* **`@sveltejs/kit`**: Meta-framework para enrutamiento y estructura de la aplicación.
+* **`@sveltejs/adapter-static`**: Adapta SvelteKit para generar una SPA/sitio estático.
+* **`@sveltejs/vite-plugin-svelte`**: Integración y compilación de Svelte dentro de Vite.
+* **`vite`**: Herramienta de construcción y servidor de desarrollo ultra rápido.
+* **`typescript`**: Añade tipado estático a JavaScript para prevenir errores.
+* **`svelte-check`**: Herramienta CLI para detectar errores de TypeScript en Svelte.
+* **`tailwindcss`**: Framework CSS basado en clases de utilidad para diseño.
+* **`@tailwindcss/vite`**: Plugin oficial para compilar Tailwind CSS con Vite.
+* **`unplugin-icons`**: Carga de iconos bajo demanda como componentes Svelte.
+* **`@iconify-json/ion`**: Paquete de iconos de la colección *Ionicons*.
+* **`@capacitor/cli`**: Herramienta de línea de comandos para gestionar Capacitor.
+* **`@types/bcryptjs`**: Definiciones de tipos TypeScript para la librería `bcryptjs`.
+* **`prettier`**: Formateador automático de código para mantener un estilo limpio.
+* **`prettier-plugin-svelte`**: Reglas de formato de Prettier específicas para archivos Svelte.
+* **`prettier-plugin-tailwindcss`**: Ordena automáticamente las clases de Tailwind en HTML/Svelte.
+
 ## General knowledge
 
 References:
